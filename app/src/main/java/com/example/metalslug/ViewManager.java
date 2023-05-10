@@ -163,11 +163,12 @@ public class ViewManager
 		headShootImage[4] = createBitmapByID(MainActivity.res, R.drawable.head_shoot_5, scale);
 		headShootImage[5] = createBitmapByID(MainActivity.res, R.drawable.head_shoot_6, scale);
 		// 加载子弹的图片
-		bulletImage = new Bitmap[4];
+		bulletImage = new Bitmap[5];
 		bulletImage[0] = createBitmapByID(MainActivity.res, R.drawable.bullet_1, scale);
 		bulletImage[1] = createBitmapByID(MainActivity.res, R.drawable.bullet_2, scale);
 		bulletImage[2] = createBitmapByID(MainActivity.res, R.drawable.bullet_3, scale);
 		bulletImage[3] = createBitmapByID(MainActivity.res, R.drawable.bullet_4, scale);
+		bulletImage[4] = createBitmapByID(MainActivity.res, R.drawable.crit_bullet_1, scale);
 		head = createBitmapByID(MainActivity.res, R.drawable.head, scale);
 		// 加载第一种怪物（炸弹）未爆炸时动画帧的图片
 		bombImage = new Bitmap[2];

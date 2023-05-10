@@ -1,6 +1,7 @@
 package com.example.metalslug.comp;
 
 import android.graphics.Canvas;
+import android.util.Log;
 
 import com.example.metalslug.GameView;
 import com.example.metalslug.ViewManager;
@@ -139,26 +140,58 @@ public class MonsterManager
 				{
 					// 将子弹设为无效
 					bullet.setEffect(false);
+					if (bullet.getIsCrit()){
+						if (monster.getDefense()>= bullet.getDamage()* bullet.getCritTimes()){
+							monster.setHp(monster.getHp() - 10);
+						}
+						else {
+							monster.setHp(monster.getHp() +monster.getDefense()- bullet.getDamage() * bullet.getCritTimes());
+						}
+
+						Log.d("TAG", "怪物被暴击");
+						Log.d("TAG", "怪物的类型：" + monster.getType());
+						Log.d("TAG", "怪物的生命值：" + monster.getHp());
+
+					}
+					else {
+						if (monster.getDefense()>= bullet.getDamage()){
+							monster.setHp(monster.getHp() - 10);
+						}
+						else {
+							monster.setHp(monster.getHp()+monster.getDefense() - bullet.getDamage());
+						}
+						Log.d("TAG", "怪物被打中");
+						Log.d("TAG", "怪物的类型：" + monster.getType());
+						Log.d("TAG", "怪物的生命值：" + monster.getHp());
+					}
+					//monster.setHp(monster.getHp() - 100);
+
 					// 将怪物设为死亡状态
-					monster.setDie(true);
-					// 如果怪物是飞机
-					if(monster.getType() == Monster.TYPE_FLY)
-					{
-						// 播放爆炸音效
-						ViewManager.soundPool.play(
-							ViewManager.soundMap.get(2), 1, 1, 0, 0, 1);
+					if (monster.getHp()<=0){
+						monster.setDie(true);
+						// 如果怪物是飞机
+						if(monster.getType() == Monster.TYPE_FLY)
+						{
+							// 播放爆炸音效
+							ViewManager.soundPool.play(
+									ViewManager.soundMap.get(2), 1, 1, 0, 0, 1);
+						}
+						// 如果怪物是人
+						if(monster.getType() == Monster.TYPE_MAN)
+						{
+							// 播放惨叫音效
+							ViewManager.soundPool.play(
+									ViewManager.soundMap.get(3), 1, 1, 0, 0, 1);
+						}
+						// 将怪物（被子弹打中的怪物）添加到delList集合中
+						delList.add(monster);
+						// 将打中怪物的子弹添加到delBulletList集合中
+
 					}
-					// 如果怪物是人
-					if(monster.getType() == Monster.TYPE_MAN)
-					{
-						// 播放惨叫音效
-						ViewManager.soundPool.play(
-							ViewManager.soundMap.get(3), 1, 1, 0, 0, 1);
-					}
-					// 将怪物（被子弹打中的怪物）添加到delList集合中
-					delList.add(monster);
-					// 将打中怪物的子弹添加到delBulletList集合中
 					delBulletList.add(bullet);
+
+					//monster.setDie(true);
+
 				}
 			}
 			// 将delBulletList包含的所有子弹从bulletList集合中删除

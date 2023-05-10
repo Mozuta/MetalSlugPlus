@@ -34,6 +34,12 @@ public class Monster
 	// 定义怪物X、Y坐标的成员变量
 	private int x = 0;
 	private int y = 0;
+	//定义怪物的生命值
+	private double hp = 0;
+	//定义怪物的防御力
+	private double defense = 0;
+	//定义怪物的攻击力
+	private double attack = 0;
 	// 定义怪物是否已经死亡的旗标
 	private boolean isDie = false;
 	// 绘制怪物图片的左上角的X坐标
@@ -63,17 +69,53 @@ public class Monster
 		// 怪物的Y坐标与玩家控制的角色的Y坐标相同
 		if (type == TYPE_BOMB || type == TYPE_MAN)
 		{
+			setHp(100);
+			setDefense(0);
+			setAttack(10);
 			y = Player.Y_DEFALUT;
 		}
 		// 如果怪物是飞机，根据屏幕高度随机生成怪物的Y坐标
 		else if (type == TYPE_FLY)
 		{
+			setHp(500);
+			setDefense(50);
+			setAttack(20);
 			y = ViewManager.SCREEN_HEIGHT * 50 / 100
 				- Util.rand((int) (ViewManager.scale * 100));
 		}
 		// 随机计算怪物的X坐标。
 		x = ViewManager.SCREEN_WIDTH + Util.rand(ViewManager.SCREEN_WIDTH >> 1)
 			- (ViewManager.SCREEN_WIDTH >> 2);
+	}
+	// 为怪物设置攻击力
+	public void setAttack(double attack)
+	{
+		this.attack = attack;
+	}
+	// 获取怪物的攻击力
+	public double getAttack()
+	{
+		return this.attack;
+	}
+	// 为怪物设置防御力
+	public void setDefense(double defense)
+	{
+		this.defense = defense;
+	}
+	// 获取怪物的防御力
+	public double getDefense()
+	{
+		return this.defense;
+	}
+	// 为怪物设置生命值
+	public void setHp(double hp)
+	{
+		this.hp = hp;
+	}
+	// 获取怪物的生命值
+	public double getHp()
+	{
+		return this.hp;
 	}
 	// 画怪物的方法
 	public void draw(Canvas canvas)
@@ -178,6 +220,7 @@ public class Monster
 	// 判断怪物是否被子弹打中的方法
 	public boolean isHurt(int x, int y)
 	{
+
 		return x >= startX && x <= endX
 				&& y >= startY && y <= endY;
 	}

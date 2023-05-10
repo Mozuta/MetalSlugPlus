@@ -48,6 +48,12 @@ public class Player
 	private String name;
 	// 保存角色生命值的成员变量
 	private int hp;
+	//保存角色暴击率的成员变量
+	private double crit=0.05;
+	//保存角色暴击伤害的成员变量
+	private double critDamage=1.5;
+	//保存角色基础攻击力的成员变量
+	private double attack=100;
 	// 保存角色所使用枪的类型（以后可考虑让角色能更换不同的枪）
 	private int gun;
 	// 保存角色当前动作的成员变量（默认向右站立）
@@ -105,6 +111,36 @@ public class Player
 		X_DEFAULT = x;
 		Y_DEFALUT = y;
 		Y_JUMP_MAX = ViewManager.SCREEN_HEIGHT * 50 / 100;
+	}
+	//设置角色的暴击率
+	public void setCrit(double crit)
+	{
+		this.crit=crit;
+	}
+	//获取角色的暴击率
+	public double getCrit()
+	{
+		return crit;
+	}
+	//设置角色的暴击伤害
+	public void setCritDamage(double critDamage)
+	{
+		this.critDamage=critDamage;
+	}
+	//获取角色的暴击伤害
+	public double getCritDamage()
+	{
+		return critDamage;
+	}
+	//设置角色的基础攻击力
+	public void setAttack(double attack)
+	{
+		this.attack=attack;
+	}
+	//获取角色的基础攻击力
+	public double getAttack()
+	{
+		return attack;
 	}
 
 
@@ -349,6 +385,20 @@ public class Player
 		// 创建子弹对象
 		Bullet bullet = new Bullet(Bullet.BULLET_TYPE_1, bulletX,
 			y - (int) (ViewManager.scale * 60), getDir());
+		//生成随机数来判断是否暴击
+		int random = (int) (Math.random() * 100);
+		if (random+1<= getCrit()*100)
+		{
+			bullet.setIsCrit(true);
+			bullet.setCritTimes(getCritDamage());
+			bullet.setType(5);
+
+		}
+		//设置子弹的伤害
+		bullet.setDamage(getAttack());
+
+
+
 		// 将子弹添加到用户发射的子弹集合中
 
 		bulletList.add(bullet);
@@ -419,8 +469,6 @@ public class Player
 				continue;
 			}
 				bullet.setIsShoot(true);
-
-				Log.d("TAG", "bullet.getyAccelate():" + bullet.getyAccelate());
 				bullet.setyAccelate(0);
 			}
 			return;

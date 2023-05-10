@@ -23,10 +23,17 @@ public class Bullet  // 子弹类
 	public static final int BULLET_TYPE_2 = 2;
 	public static final int BULLET_TYPE_3 = 3;
 	public static final int BULLET_TYPE_4 = 4;
+	public static final int BULLET_TYPE_5 = 5;
 	//定义子弹是否已经打出
 	public boolean isShoot = false;
 	// 定义子弹的类型
 	private int type;
+	//定义子弹是否暴击
+	public boolean isCrit = false;
+	//定义子弹的暴击倍数
+	public double critTimes = 0;
+	//定义子弹的伤害
+	public double damage = 0;
 	// 子弹的x、y坐标
 	private int x;
 	private int y;
@@ -44,6 +51,37 @@ public class Bullet  // 子弹类
 		this.y = y;
 		this.dir = dir;
 	}
+	//获取子弹的暴击倍数
+	public double getCritTimes()
+	{
+		return critTimes;
+	}
+	//设置子弹的暴击倍数
+	public void setCritTimes(double critTimes)
+	{
+		this.critTimes = critTimes;
+	}
+	//获取子弹的伤害
+	public double getDamage()
+	{
+		return damage;
+	}
+	//设置子弹的伤害
+	public void setDamage(double damage)
+	{
+		this.damage = damage;
+	}
+	//定义子弹类型
+	public int getType()
+	{
+		return type;
+	}
+	//定义子弹类型
+	public void setType(int type)
+	{
+		this.type = type;
+	}
+
 	// 根据子弹类型获取子弹对应的图片
 	public Bitmap getBitmap()
 	{
@@ -57,9 +95,21 @@ public class Bullet  // 子弹类
 				return ViewManager.bulletImage[2];
 			case BULLET_TYPE_4:
 				return ViewManager.bulletImage[3];
+				case BULLET_TYPE_5:
+				return ViewManager.bulletImage[4];
 			default:
 				return null;
 		}
+	}
+	//获取是否暴击
+	public boolean getIsCrit()
+	{
+		return isCrit;
+	}
+	//设置是否暴击
+	public void setIsCrit(boolean isCrit)
+	{
+		this.isCrit = isCrit;
 	}
 	//获取是否开火
 	public boolean getIsShoot()
@@ -90,6 +140,9 @@ public class Bullet  // 子弹类
 			// 对于第4种子弹，以8为基数来计算它的速度
 			case BULLET_TYPE_4:
 				return (int) (ViewManager.scale * 8) * sign;
+			// 对于第5种子弹，以12为基数来计算它的速度
+			case BULLET_TYPE_5:
+				return (int) (ViewManager.scale * 12) * sign;
 			default:
 				return (int) (ViewManager.scale * 8) * sign;
 		}
