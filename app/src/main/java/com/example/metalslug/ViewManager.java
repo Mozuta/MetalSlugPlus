@@ -62,6 +62,16 @@ public class ViewManager
 	public static Bitmap[] manImgae = null;
 	// 保存第三种怪物（人）的死亡时动画帧的图片
 	public static Bitmap[] manDieImage = null;
+	// 保存第四种怪物（死亡领主）的动画帧的图片
+	public static Bitmap[] bossDKImage = null;
+	// 保存第四种怪物（死亡领主）的攻击时动画帧的图片
+	public static Bitmap[] bossDKAttackImage = null;
+	// 保存第四种怪物（死亡领主）的受伤时动画帧的图片
+	public static Bitmap[] bossDKHurtImage = null;
+	// 保存第四种怪物（死亡领主）的施放法术时动画帧的图片
+	public static Bitmap[] bossDKMagicImage = null;
+	// 保存第四种怪物（死亡领主）的死亡时动画帧的图片
+	public static Bitmap[] bossDKDieImage = null;
 	// 定义游戏对图片的缩放比例
 	public static float scale = 1f;
 
@@ -221,6 +231,42 @@ public class ViewManager
 		manDieImage[2] = createBitmapByID(MainActivity.res, R.drawable.man_die_3, scale);
 		manDieImage[3] = createBitmapByID(MainActivity.res, R.drawable.man_die_4, scale);
 		manDieImage[4] = createBitmapByID(MainActivity.res, R.drawable.man_die_5, scale);
+		// 加载第四种怪物（死亡领主）活着时的动画帧的图片
+		bossDKImage = new Bitmap[8];
+		bossDKImage[0] = createBitmapByID(MainActivity.res, R.drawable.dk_1, scale);
+		bossDKImage[1] = createBitmapByID(MainActivity.res, R.drawable.dk_2, scale);
+		bossDKImage[2] = createBitmapByID(MainActivity.res, R.drawable.dk_3, scale);
+		bossDKImage[3] = createBitmapByID(MainActivity.res, R.drawable.dk_4, scale);
+		bossDKImage[4] = createBitmapByID(MainActivity.res, R.drawable.dk_5, scale);
+		bossDKImage[5] = createBitmapByID(MainActivity.res, R.drawable.dk_6, scale);
+		bossDKImage[6] = createBitmapByID(MainActivity.res, R.drawable.dk_7, scale);
+		bossDKImage[7] = createBitmapByID(MainActivity.res, R.drawable.dk_8, scale);
+		// 加载第四种怪物（死亡领主）死亡时的动画帧的图片
+		bossDKDieImage = new Bitmap[13];
+		bossDKDieImage[0] = createBitmapByID(MainActivity.res, R.drawable.dk_death_1, scale);
+		bossDKDieImage[1] = createBitmapByID(MainActivity.res, R.drawable.dk_death_2, scale);
+		bossDKDieImage[2] = createBitmapByID(MainActivity.res, R.drawable.dk_death_3, scale);
+		bossDKDieImage[3] = createBitmapByID(MainActivity.res, R.drawable.dk_death_4, scale);
+		bossDKDieImage[4] = createBitmapByID(MainActivity.res, R.drawable.dk_death_5, scale);
+		bossDKDieImage[5] = createBitmapByID(MainActivity.res, R.drawable.dk_death_6, scale);
+		bossDKDieImage[6] = createBitmapByID(MainActivity.res, R.drawable.dk_death_7, scale);
+		bossDKDieImage[7] = createBitmapByID(MainActivity.res, R.drawable.dk_death_8, scale);
+		bossDKDieImage[8] = createBitmapByID(MainActivity.res, R.drawable.dk_death_9, scale);
+		// 加载第四种怪物（死亡领主）攻击时的动画帧的图片
+		bossDKAttackImage = new Bitmap[10];
+		bossDKAttackImage[0] = createBitmapByID(MainActivity.res, R.drawable.dk_atk_1, scale);
+		bossDKAttackImage[1] = createBitmapByID(MainActivity.res, R.drawable.dk_atk_2, scale);
+		bossDKAttackImage[2] = createBitmapByID(MainActivity.res, R.drawable.dk_atk_3, scale);
+		bossDKAttackImage[3] = createBitmapByID(MainActivity.res, R.drawable.dk_atk_4, scale);
+		bossDKAttackImage[4] = createBitmapByID(MainActivity.res, R.drawable.dk_atk_5, scale);
+		bossDKAttackImage[5] = createBitmapByID(MainActivity.res, R.drawable.dk_atk_6, scale);
+		bossDKAttackImage[6] = createBitmapByID(MainActivity.res, R.drawable.dk_atk_7, scale);
+		bossDKAttackImage[7] = createBitmapByID(MainActivity.res, R.drawable.dk_atk_8, scale);
+		bossDKAttackImage[8] = createBitmapByID(MainActivity.res, R.drawable.dk_atk_9, scale);
+		bossDKAttackImage[9] = createBitmapByID(MainActivity.res, R.drawable.dk_atk_10, scale);
+		// 加载第四种怪物（死亡领主）受伤时的动画帧的图片
+
+
 	}
 // 绘制游戏界面的方法，该方法先绘制游戏背景地图，再绘制游戏角色，最后绘制所有怪物
 public static void drawGame(Canvas canvas)

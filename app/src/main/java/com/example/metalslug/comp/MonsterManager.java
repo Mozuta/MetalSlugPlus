@@ -34,14 +34,14 @@ public class MonsterManager
 		if (monsterList.size() < 3 + Util.rand(3))
 		{
 			// 创建新怪物
-			Monster monster = new Monster(1 + Util.rand(3));
+			//Monster monster = new Monster(1 + Util.rand(4));
+			Monster monster = new Monster(4);
 			monsterList.add(monster);
 		}
 	}
 
 	// 更新怪物与子弹的坐标的方法
-	public static void updatePosistion(int shift)
-	{
+	public static void updatePosistion(int shift)	{
 		Monster monster = null;
 		// 定义一个集合，保存所有将要被删除的怪物
 		List<Monster> delList = new ArrayList<>();
@@ -87,8 +87,7 @@ public class MonsterManager
 	}
 
 	// 检查怪物是否将要死亡的方法
-	public static void checkMonster()
-	{
+	public static void checkMonster() {
 		// 获取玩家发射的所有子弹
 		List<Bullet> bulletList = GameView.player.getBulletList();
 		if (bulletList == null)
@@ -206,8 +205,7 @@ public class MonsterManager
 	}
 
 // 绘制所有怪物的方法
-public static void drawMonster(Canvas canvas)
-{
+public static void drawMonster(Canvas canvas){
 	Monster monster;
 	// 遍历所有活着的怪物，绘制活着的怪物
 	for (int i = 0; i < monsterList.size(); i++)

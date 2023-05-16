@@ -29,6 +29,19 @@ public class Monster
 	public static final int TYPE_BOMB = 1;
 	public static final int TYPE_FLY = 2;
 	public static final int TYPE_MAN = 3;
+	public static final int TYPE_DEATH_KING = 4;
+	//定义怪物之前的行动
+	public static final int ACTION_STAND = 0;
+	public static final int ACTION_WALK = 1;
+	public static final int ACTION_ATTACK = 2;
+	public static final int ACTION_SPELL = 3;
+	private int action = ACTION_STAND;
+	public int getAction() {
+		return action;
+	}
+	public void setAction(int action) {
+		this.action = action;
+	}
 	// 定义怪物类型的成员变量
 	private int type = TYPE_BOMB;
 	// 定义怪物X、Y坐标的成员变量
@@ -82,6 +95,12 @@ public class Monster
 			setAttack(20);
 			y = ViewManager.SCREEN_HEIGHT * 50 / 100
 				- Util.rand((int) (ViewManager.scale * 100));
+		} else if (type == TYPE_DEATH_KING)
+		{
+			setHp(100);
+			setDefense(10);
+			setAttack(50);
+			y = Player.Y_DEFALUT;
 		}
 		// 随机计算怪物的X坐标。
 		x = ViewManager.SCREEN_WIDTH + Util.rand(ViewManager.SCREEN_WIDTH >> 1)
@@ -138,6 +157,32 @@ public class Monster
 				// 死亡的怪物用死亡图片
 				drawAni(canvas, isDie ? ViewManager.manDieImage : ViewManager.manImgae);
 				break;
+			case TYPE_DEATH_KING:
+				// 死亡的怪物用死亡图片
+
+				if (isDie){
+					drawAni(canvas, ViewManager.bossDKDieImage);
+				}
+				else {
+					switch (action)
+					{
+						case ACTION_STAND:
+							drawAni(canvas, ViewManager.bossDKImage);
+							break;
+						case ACTION_WALK:
+							//drawAni(canvas, ViewManager.bossDKWalkImage);
+							break;
+						case ACTION_ATTACK:
+							drawAni(canvas, ViewManager.bossDKAttackImage);
+							break;
+
+						default:
+							break;
+					}
+
+				}
+
+				break;
 			default:
 				break;
 		}
@@ -179,6 +224,14 @@ public class Monster
 			{
 				drawX = x + (int) (ViewManager.scale * 50);
 			}
+			else if (type == TYPE_FLY)
+			{
+				drawX = x - (int) (ViewManager.scale * 50);
+			}
+			else if (type == TYPE_DEATH_KING)
+			{
+				//drawX = x - (int) (ViewManager.scale);
+			}
 		}
 		// 对绘制怪物动画帧位图的Y坐标进行微调
 		int drawY = y - bitmap.getHeight();
@@ -201,6 +254,11 @@ public class Monster
 			}
 			// 如果怪物是飞机，只在最后一帧才发射子弹
 			if (type == TYPE_FLY && drawIndex == bitmapArr.length - 1)
+			{
+				addBullet();
+			}
+			// 如果怪物是死亡王，只在第3帧才发射子弹
+			if (type == TYPE_DEATH_KING && drawIndex == 2)
 			{
 				addBullet();
 			}
@@ -237,6 +295,8 @@ public class Monster
 				return Bullet.BULLET_TYPE_3;
 			case TYPE_MAN:
 				return Bullet.BULLET_TYPE_2;
+			case TYPE_DEATH_KING:
+				return 0;
 			default:
 				return 0;
 		}

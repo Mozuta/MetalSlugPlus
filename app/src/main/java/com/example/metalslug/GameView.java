@@ -8,6 +8,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Outline;
 import android.graphics.Paint;
 import android.os.Handler;
 import android.os.Looper;
@@ -15,7 +16,9 @@ import android.os.Message;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.view.ViewOutlineProvider;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
@@ -250,6 +253,14 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback
 					// 添加向左移动的按钮
 					Button button = new Button(mainContext);
 					button.setId(ID_LEFT);
+					//按钮长宽相等
+					button.setWidth((int) (ViewManager.scale * 100));
+					button.setHeight((int) (ViewManager.scale * 100));
+					//缩放图片二分之一
+					button.setScaleX(0.7f);
+					button.setScaleY(0.7f);
+
+
 					// 设置按钮的背景图片
 					button.setBackground(getResources().getDrawable(R.drawable.left));
 					RelativeLayout.LayoutParams params = new RelativeLayout
@@ -257,8 +268,20 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback
 						LayoutParams.WRAP_CONTENT);
 					params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
 					params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-					params.setMargins((int) (ViewManager.scale * 20),
-						0, 0, (int) (ViewManager.scale * 10));
+					params.setMargins((int) (ViewManager.scale * 10),
+						0, 0, (int) (ViewManager.scale * 0));
+					//设置按钮为圆形
+					button.setOutlineProvider(new ViewOutlineProvider()
+					{
+						@Override
+						public void getOutline(View view, Outline outline)
+						{
+							outline.setOval(0, 0, view.getWidth(), view.getHeight());
+						}
+					});
+					button.setClipToOutline(true);
+
+
 					// 向游戏界面上添加向左的按钮
 					gameLayout.addView(button, params);
 					// 为按钮添加事件监听器
@@ -278,14 +301,35 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback
 					});
 					// 添加向右移动的按钮
 					button = new Button(mainContext);
+					//按钮长宽相等
+					button.setWidth((int) (ViewManager.scale * 100));
+					button.setHeight((int) (ViewManager.scale * 100));
+					//缩放图片二分之一
+					button.setScaleX(0.7f);
+					button.setScaleY(0.7f);
+
+
 					// 设置按钮的背景图片
 					button.setBackground(getResources().getDrawable(R.drawable.right));
 					params = new RelativeLayout.LayoutParams(
 						LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 					params.addRule(RelativeLayout.RIGHT_OF, ID_LEFT);
 					params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-					params.setMargins((int) (ViewManager.scale * 20),
-						0, 0, (int) (ViewManager.scale * 10));
+					params.setMargins((int) (ViewManager.scale * 0),
+						0, 0, (int) (ViewManager.scale * 0));
+					//设置按钮为高度和宽度等比例的圆形
+					button.setOutlineProvider(new ViewOutlineProvider()
+					{
+						@Override
+						public void getOutline(View view, Outline outline)
+						{
+							outline.setOval(0, 0, view.getWidth(), view.getHeight());
+						}
+					});
+					button.setClipToOutline(true);
+
+
+
 					// 向游戏界面上添加向右的按钮
 					gameLayout.addView(button, params);
 					// 为按钮添加事件监听器
@@ -306,14 +350,20 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback
 					// 添加射击按钮
 					button = new Button(mainContext);
 					button.setId(ID_FIRE);
+					//按钮长宽相等
+					button.setWidth((int) (ViewManager.scale * 100));
+					button.setHeight((int) (ViewManager.scale * 100));
+					//缩放图片二分之一
+					button.setScaleX(0.7f);
+					button.setScaleY(0.7f);
 					// 设置按钮的背景图片
 					button.setBackgroundResource(R.drawable.fire);
 					params = new RelativeLayout.LayoutParams(
 						LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 					params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
 					params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-					params.setMargins(0, 0, (int) (ViewManager.scale * 20),
-						(int) (ViewManager.scale * 10));
+					params.setMargins(0, 0, (int) (ViewManager.scale * 0),
+						(int) (ViewManager.scale * 0));
 					// 向游戏界面上添加射击的按钮
 					gameLayout.addView(button, params);
 					// 为按钮添加事件监听器
@@ -326,14 +376,20 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback
 					});
 					// 添加跳的按钮
 					button = new Button(mainContext);
+					//按钮长宽相等
+					button.setWidth((int) (ViewManager.scale * 100));
+					button.setHeight((int) (ViewManager.scale * 100));
+					//缩放图片二分之一
+					button.setScaleX(0.7f);
+					button.setScaleY(0.7f);
 					// 设置按钮的背景图片
 					button.setBackgroundResource(R.drawable.jump);
 					params = new RelativeLayout.LayoutParams(
 						LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 					params.addRule(RelativeLayout.LEFT_OF, ID_FIRE);
 					params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-					params.setMargins(0, 0, (int) (ViewManager.scale * 20),
-						(int) (ViewManager.scale * 10));
+					params.setMargins(0, 0, (int) (ViewManager.scale * 0),
+						(int) (ViewManager.scale * 0));
 					// 向游戏界面上添加跳的按钮
 					gameLayout.addView(button, params);
 					// 为按钮添加事件监听器
