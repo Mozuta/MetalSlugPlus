@@ -54,7 +54,7 @@ public class MenuActivity extends AppCompatActivity {
                 }*/
                 //销毁播放器
                 player.stop();
-                Intent intent = new Intent(MenuActivity.this, MainActivity.class);
+                Intent intent = new Intent(MenuActivity.this, DialogueActivity.class);
                 MenuActivity.this.startActivity(intent);
                 MenuActivity.this.finish();
             }

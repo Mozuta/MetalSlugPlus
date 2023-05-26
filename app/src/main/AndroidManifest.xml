@@ -11,47 +11,39 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.example.fifteen.PuzzleActivity"
-            android:label="@string/app_name"
+            android:name=".DialogueActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:keepScreenOn="true"
-
-            android:windowSoftInputMode="adjustPan"
-            android:exported="true" />
-
+            android:exported="false" />
         <activity
-            android:name="com.example.metalslug.MenuActivity"
-            android:screenOrientation="landscape"
+            android:name="com.example.fifteen.PuzzleActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:keepScreenOn="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".MenuActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
             android:keepScreenOn="true"
-
-            android:windowSoftInputMode="adjustPan"
-            android:exported="true">
+            android:label="@string/app_name"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-        </activity>
-
-
-        <!-- 设置Activity所需的屏幕方向、软输入方式 -->
+        </activity> <!-- 设置Activity所需的屏幕方向、软输入方式 -->
         <activity
-            android:name="com.example.metalslug.MainActivity"
+            android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="false"
             android:keepScreenOn="true"
-
             android:screenOrientation="landscape"
-            android:windowSoftInputMode="adjustPan">
-
-
-
-        </activity>
+            android:windowSoftInputMode="adjustPan" />
     </application>
 
 </manifest>
