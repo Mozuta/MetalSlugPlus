@@ -12,6 +12,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".DialogueActivity"
+            android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:exported="false" />
         <activity
