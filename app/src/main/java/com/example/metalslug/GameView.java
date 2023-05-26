@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 
-
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Outline;
@@ -13,6 +13,7 @@ import android.graphics.Paint;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -74,7 +75,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback
 		paint = new Paint();
 		// 设置抗锯齿
 		paint.setAntiAlias(true);
-		// 设置该组件会保持屏幕常量，避免游戏过程中出现黑屏。
+		// 设置该组件会保持屏幕常亮，避免游戏过程中出现黑屏。
 		setKeepScreenOn(true);
 		// 设置焦点，相应事件处理
 		setFocusable(true);
@@ -241,6 +242,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback
 	private static final int ID_LEFT = 9000000;
 	private static final int ID_FIRE = ID_LEFT + 1;
 
+	@SuppressLint("ClickableViewAccessibility")
 	public int doGame(int step)
 	{
 		switch (step)
@@ -307,6 +309,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback
 					//缩放图片二分之一
 					button.setScaleX(0.7f);
 					button.setScaleY(0.7f);
+					//button.setId(ID_RIGHT);
 
 
 					// 设置按钮的背景图片
@@ -393,7 +396,25 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback
 					// 向游戏界面上添加跳的按钮
 					gameLayout.addView(button, params);
 					// 为按钮添加事件监听器
-					button.setOnClickListener(view -> player.setJump(true));
+					Log.e("jump", player.Y_DEFALUT+"");
+					//button.setOnClickListener(view -> player.setJump(true));
+					button.setOnTouchListener((view, event) -> {
+						switch (event.getAction())
+						{
+							case MotionEvent.ACTION_DOWN:
+								player.setJump(false);
+								break;
+							case MotionEvent.ACTION_UP:
+								player.setJump(true);
+								break;
+							case MotionEvent.ACTION_MOVE:
+								break;
+						}
+						return false;
+					});
+
+
+
 					setViewHandler.sendMessage(setViewHandler
 							.obtainMessage(0, gameLayout));  // ③
 				}

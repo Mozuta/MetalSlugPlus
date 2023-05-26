@@ -503,6 +503,7 @@ public class Player
 				// 已经掉落到最低点
 				if (getY() >= Player.Y_DEFALUT)
 				{
+					Log.e("TAG", "掉落到最低点");
 					// 恢复Y坐标
 					setY(Player.Y_DEFALUT);
 					isJump = false;

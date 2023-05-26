@@ -1,3 +1,131 @@
 <resources>
-	<string name="app_name">合金弹头</string>
+    <string name="app_name">合金弹头</string>
+
+    <string name="action_settings">SETTINGS</string>
+    <string name="action_new">NEW</string>
+    <string name="action_pause">PAUSE</string>
+    <string name="action_leaderboard">RECORDS</string>
+    <string name="action_stats">STATS</string>
+    <string name="action_hm_check">check</string>
+    <string name="action_hm_peek">peek</string>
+
+    <string name="info_moves">MOVES</string>
+    <string name="info_time">TIME</string>
+    <string name="info_tps">TPS</string>
+    <string name="info_win">SOLVED!</string>
+    <string name="info_pause">PAUSED</string>
+    <string name="info_no_data">no data</string>
+
+    <string name="help_how_to_play">how to play</string>
+    <string name="help_how_to_play_url">https://15puzzle.app/how-to-play/</string>
+
+    <string name="pref_width">Width</string>
+    <string name="pref_height">Height</string>
+    <string name="pref_color">Color</string>
+    <string name="pref_color_mode">Color theme</string>
+    <string name="pref_fringe">Multi-color</string>
+    <string name="pref_type">Type</string>
+    <string name="pref_animation">Animations</string>
+    <string name="pref_mode">Mode</string>
+    <string name="pref_sort">Sort</string>
+    <string name="pref_anti_alias">Anti-alias</string>
+    <string name="pref_new_game_delay">Delay</string>
+    <string name="pref_time_format">Time format</string>
+    <string name="pref_stats">Stats</string>
+    <string name="pref_missing_tile">Missing tile</string>
+    <string name="pref_ingame_info">Ingame info</string>
+    <string name="pref_ingame_info_customize">customize &gt;</string>
+    <string name="pref_ingame_info_moves">Moves</string>
+    <string name="pref_ingame_info_time">Time</string>
+    <string name="pref_ingame_info_tps">TPS</string>
+
+    <string name="tile_anim_speed_off">off</string>
+    <string name="tile_anim_speed_fast">fast</string>
+    <string name="tile_anim_speed_normal">normal</string>
+
+    <string name="stats_single">Single</string>
+    <string name="stats_ao5" translatable="false">Ao5</string>
+    <string name="stats_ao12" translatable="false">Ao12</string>
+    <string name="stats_ao50" translatable="false">Ao50</string>
+    <string name="stats_ao100" translatable="false">Ao100</string>
+    <string name="stats_tps" translatable="false">TPS</string>
+    <string name="stats_session_avg">Session</string>
+    <string name="stats_best_time">Best time</string>
+    <string name="stats_best_moves">Best moves</string>
+    <string name="stats_worst_time">Worst time</string>
+    <string name="stats_worst_moves">Worst moves</string>
+    <string name="stats_na">n/a</string>
+    <string name="stats_time">Time</string>
+    <string name="stats_moves">Moves</string>
+
+    <string name="settings_page_basic">basic</string>
+    <string name="settings_page_advanced">advanced</string>
+
+    <string name="export">export</string>
+    <string name="import_records">import</string>
+    <string name="export_width">width</string>
+    <string name="export_height">height</string>
+    <string name="export_type">type</string>
+    <string name="export_moves">moves</string>
+    <string name="export_time">time</string>
+    <string name="export_hard">hard mode</string>
+    <string name="export_date">date</string>
+    <string name="export_tps">tps</string>
+    <string name="export_success">Exported %1$d entries</string>
+    <string name="export_import_failure">Error</string>
+    <string name="import_success">Imported %1$d entries</string>
+
+    <string name="reset">reset</string>
+    <string name="back">back</string>
+
+    <string-array name="toggle">
+        <item>off</item>
+        <item>on</item>
+    </string-array>
+    <string-array name="difficulty_modes">
+        <item>easy</item>
+        <item>hard</item>
+    </string-array>
+    <string-array name="color_mode">
+        <item>day</item>
+        <item>night</item>
+        <item>system</item>
+    </string-array>
+    <string-array name="game_types">
+        <item>classic</item>
+        <item>snake</item>
+        <item>spiral</item>
+    </string-array>
+    <string-array name="multi_color_modes">
+        <item>off</item>
+        <item>rows</item>
+        <item>columns</item>
+        <item>fringe</item>
+        <item>solved</item>
+    </string-array>
+    <string-array name="ingame_info">
+        <item>on</item>
+        <item>after solve</item>
+        <item>off</item>
+    </string-array>
+    <string-array name="time_format" translatable="false">
+        <item>0:12</item>
+        <item>0:12.3</item>
+        <item>0:12.345</item>
+        <item>12.345</item>
+    </string-array>
+    <string-array name="sort_types">
+        <item>fewer moves</item>
+        <item>less time</item>
+    </string-array>
+    <string-array name="missing_tile_values">
+        <item>default</item>
+        <item>random</item>
+    </string-array>
+
+    <plurals name="stats_total">
+        <item quantity="zero">No solves</item>
+        <item quantity="one">Total %1$d solve</item>
+        <item quantity="other">Total %1$d solves</item>
+    </plurals>
 </resources>
